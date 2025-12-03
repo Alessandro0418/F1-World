@@ -1,0 +1,77 @@
+/* title */
+.loading-text {
+  font-family: "Saira", sans-serif;
+  place-self: center;
+  background: linear-gradient(90deg, #7bb5de, #d84548, #7bb5de) -100%/ 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: 100px;
+  animation: shimmer 2s linear infinite;
+}
+
+@keyframes shimmer {
+  to {
+    background-position: 100%;
+  }
+}
+
+@media (forced-colors: active) {
+  p {
+    background: #212121;
+    color: aquamarine;
+  }
+}
+
+/* custom cards */
+.card-custom {
+  position: relative;
+  width: 220px;
+  height: 340px;
+  padding: 0px;
+  background: #0a0f1c;
+  clip-path: polygon(0% 0%, 100% 0, 100% 85%, 50% 100%, 0 85%);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.card-custom::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  clip-path: inherit;
+  background: linear-gradient(135deg, #2e171c, #61232a, #3c191f, #2e171c);
+  z-index: -1;
+  filter: blur(10px);
+}
+
+.card-custom img {
+  clip-path: polygon(0% 0%, 100% 0, 100% 85%, 0% 100%, 0 100%);
+}
+
+/* custom calssies */
+
+.card-custom-2 {
+  background-color: #242429;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.card-custom-2:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 1rem 1rem 0px rgb(233 6 6 / 22%);
+}
+
+/* mt custom */
+.mt-6 {
+  margin-top: 60px;
+}
+
+.mt-7 {
+  margin-top: 70px;
+}
+
+.mt-8 {
+  margin-top: 80px;
+}

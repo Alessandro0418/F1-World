@@ -1,5 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&display=swap");
+
+.saira-font {
+  font-family: "Saira", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
 body {
   background-image: url("/src/assets/img/F1World-bg.jpg");
   background-size: cover;
   background-repeat: no-repeat;
+  font-family: "Saira", sans-serif;
+  user-select: none;
 }
