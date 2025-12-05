@@ -7,8 +7,8 @@ import "../components/HomeStyle.css";
 export default function HomePage() {
   const navigate = useNavigate();
 
-  const handleGoStandings = () => {
-    navigate("/StandingOverview");
+  const handleGoSession = () => {
+    navigate("/SessionOverview");
   };
 
   return (
@@ -46,12 +46,12 @@ export default function HomePage() {
         <Col xs={12} md={4} className="d-flex justify-content-center">
           <Card
             className="text-center card-custom-2 w-75 w-md-50"
-            onClick={handleGoStandings}
+            onClick={handleGoSession}
           >
             <Card.Body>
-              <i className="bi bi-trophy fs-2"></i>
-              <Card.Title className="mt-3">Standing Overview</Card.Title>
-              <p className="mt-2">Drivers & Constructors</p>
+              <i class="bi bi-flag fs-2"></i>
+              <Card.Title className="mt-3">Session Overview</Card.Title>
+              <p className="mt-2">Standings after a session</p>
             </Card.Body>
           </Card>
         </Col>
