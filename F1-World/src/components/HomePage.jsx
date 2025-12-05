@@ -10,12 +10,15 @@ export default function HomePage() {
   const handleGoSession = () => {
     navigate("/SessionOverview");
   };
+  const handleGoCalendar = () => {
+    navigate("/Calendar");
+  };
 
   return (
     <Container fluid>
       <Row className="mt-5 mb-5">
         <Col md={12}>
-          <h1 className="loading-text">F1 World</h1>
+          <h1 className="loading-text fw-bold">F1 World</h1>
         </Col>
       </Row>
       <Row className="d-flex justify-content-evenly g-4">
@@ -57,7 +60,10 @@ export default function HomePage() {
         </Col>
 
         <Col xs={12} md={4} className="d-flex justify-content-center">
-          <Card className="text-center card-custom-2 w-75 w-md-50">
+          <Card
+            className="text-center card-custom-2 w-75 w-md-50"
+            onClick={handleGoCalendar}
+          >
             <Card.Body>
               <i className="bi bi-calendar3 fs-2"></i>
               <Card.Title className="mt-3">Upcoming Races</Card.Title>

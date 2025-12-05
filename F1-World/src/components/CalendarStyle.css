@@ -1,0 +1,39 @@
+.custom-nav {
+  background: #242429;
+}
+
+.custom-nav-effect {
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.custom-nav-effect::before,
+.custom-nav-effect::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background: #a6a6a6;
+  transition: all 0.5s;
+}
+
+.custom-nav-effect::before {
+  top: 0;
+  left: 0;
+}
+
+.custom-nav-effect::after {
+  bottom: 0;
+  right: 0;
+}
+
+.custom-nav-effect:hover::before {
+  width: 100%;
+  transition: width 0.25s ease-in-out;
+}
+
+.custom-nav-effect:hover::after {
+  width: 100%;
+  transition: width 0.25s ease-in-out 0.25s;
+}

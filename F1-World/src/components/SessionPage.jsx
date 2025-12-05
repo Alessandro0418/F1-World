@@ -23,6 +23,9 @@ export default function SessionPage() {
   const handleGoSession = () => {
     navigate("/SessionOverview");
   };
+  const handleGoCalendar = () => {
+    navigate("/Calendar");
+  };
 
   const [results, setResults] = useState([]);
   const [session, setSession] = useState([]);
@@ -83,24 +86,37 @@ export default function SessionPage() {
 
   return (
     <Container fluid className="min-vh-100">
-      <Navbar expand="lg" className="custom-nav mt-3 rounded-4">
+      <Navbar expand="lg" className="mt-3 rounded-4 custom-nav">
         <Container fluid>
           <Navbar.Brand className="text-white ms-2">F1 World</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav
-              className="me-auto my-2 my-lg-0"
-              style={{ maxHeight: "100px" }}
+              className="me-auto my-2 my-lg-0 gap-3"
+              style={{ maxHeight: "200px" }}
               navbarScroll
             >
-              <Nav.Link className="text-white" onClick={handleGoHome}>
+              <Nav.Link
+                className="text-white custom-nav-effect"
+                onClick={handleGoHome}
+              >
                 Home
               </Nav.Link>
-              <Nav.Link className="text-white" onClick={handleGoSession}>
+              <Nav.Link
+                className="text-white custom-nav-effect"
+                onClick={handleGoSession}
+              >
                 Session Overview
               </Nav.Link>
-              <Nav.Link className="text-white">Calendar</Nav.Link>
-              <Nav.Link className="text-white">Weather</Nav.Link>
+              <Nav.Link
+                className="text-white custom-nav-effect"
+                onClick={handleGoCalendar}
+              >
+                Calendar
+              </Nav.Link>
+              <Nav.Link className="text-white custom-nav-effect">
+                Weather
+              </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
@@ -108,10 +124,13 @@ export default function SessionPage() {
 
       <Row className="mt-5 mb-3">
         <Col xs={12} className="text-center">
-          <h1 className="display-4 text-white">Session Overview</h1>
+          <h1 className="display-4 text-white fw-bold">Session Overview</h1>
           <h4 className="text-white">{session.circuit_short_name}</h4>
           <p className="text-white">
-            {session.session_name} - {session.session_type}
+            Last session:{" "}
+            <strong>
+              {session.session_name} - {session.session_type}
+            </strong>
           </p>
         </Col>
       </Row>
