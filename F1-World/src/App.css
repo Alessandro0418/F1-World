@@ -15,3 +15,17 @@ body {
   font-family: "Saira", sans-serif;
   user-select: none;
 }
+
+/* custom calssies */
+/* mt custom */
+.mt-6 {
+  margin-top: 60px;
+}
+
+.mt-7 {
+  margin-top: 70px;
+}
+
+.mt-8 {
+  margin-top: 80px;
+}

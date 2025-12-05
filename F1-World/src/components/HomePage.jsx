@@ -1,14 +1,14 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Container, Row, Col, Button, Card } from "react-bootstrap";
+import { Container, Row, Col, Card } from "react-bootstrap";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { useNavigate } from "react-router-dom";
-import "../components/HomePage.css";
+import "../components/HomeStyle.css";
 
 export default function HomePage() {
   const navigate = useNavigate();
 
-  const handleClick = () => {
-    navigate("");
+  const handleGoStandings = () => {
+    navigate("/StandingOverview");
   };
 
   return (
@@ -18,7 +18,7 @@ export default function HomePage() {
           <h1 className="loading-text">F1 World</h1>
         </Col>
       </Row>
-      <Row className="d-flex justify-content-evenly">
+      <Row className="d-flex justify-content-evenly g-4">
         <Col md={4} className="card-custom">
           <img
             src="/src/assets/img/driver-img-1.png"
@@ -41,31 +41,37 @@ export default function HomePage() {
           />
         </Col>
       </Row>
-      <Row className="mt-8">
-        <Col md={4} className="d-flex justify-content-evenly">
-          <Card className="text-center w-50 card-custom-2">
+
+      <Row className="mt-8 gy-4">
+        <Col xs={12} md={4} className="d-flex justify-content-center">
+          <Card
+            className="text-center card-custom-2 w-75 w-md-50"
+            onClick={handleGoStandings}
+          >
             <Card.Body>
-              <i class="bi bi-trophy fs-2"></i>
+              <i className="bi bi-trophy fs-2"></i>
               <Card.Title className="mt-3">Standing Overview</Card.Title>
-              <p className="mt-2">Drivers&Constructors</p>
+              <p className="mt-2">Drivers & Constructors</p>
             </Card.Body>
           </Card>
         </Col>
-        <Col md={4} className="d-flex justify-content-evenly">
-          <Card className="text-center w-50 card-custom-2">
+
+        <Col xs={12} md={4} className="d-flex justify-content-center">
+          <Card className="text-center card-custom-2 w-75 w-md-50">
             <Card.Body>
-              <i class="bi bi-calendar3 fs-2"></i>
-              <Card.Title className="mt-3">Standing Overview</Card.Title>
-              <p className="mt-2">Drivers&Constructors</p>
+              <i className="bi bi-calendar3 fs-2"></i>
+              <Card.Title className="mt-3">Upcoming Races</Card.Title>
+              <p className="mt-2">Calendar Preview</p>
             </Card.Body>
           </Card>
         </Col>
-        <Col md={4} className="d-flex justify-content-evenly">
-          <Card className="text-center w-50 card-custom-2">
+
+        <Col xs={12} md={4} className="d-flex justify-content-center">
+          <Card className="text-center card-custom-2 w-75 w-md-50">
             <Card.Body>
-              <i class="bi bi-cloud-sun fs-2"></i>
-              <Card.Title className="mt-3">Standing Overview</Card.Title>
-              <p className="mt-2">Drivers&Constructors</p>
+              <i className="bi bi-cloud-sun fs-2"></i>
+              <Card.Title className="mt-3">Weather</Card.Title>
+              <p className="mt-2">Weather & Track Conditions</p>
             </Card.Body>
           </Card>
         </Col>
