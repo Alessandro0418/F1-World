@@ -93,7 +93,7 @@ export default function HomePage() {
       <p className="text-white fs-3 mt-6 d-flex justify-content-center align-items-center">
         <i class="bi bi-caret-down-fill"></i>
       </p>
-      <footer className="bg-dark text-white pt-4 pb-2 mt-footer mb-5 rounded-4">
+      <footer className="bg-dark text-white pt-4 pb-2 mt-footer mb-5 rounded-4 border border-1 border-danger">
         <Container>
           <Row className="text-center text-md-start">
             <Col md={4} className="mb-3 mb-md-0">
@@ -103,9 +103,9 @@ export default function HomePage() {
               </p>
 
               <p className="smaller text-secondary">
-                This project/website is unofficial and is not associated in any
-                way with the Formula 1 companies. F1, FORMULA ONE, FORMULA 1,
-                FIA FORMULA ONE WORLD CHAMPIONSHIP, GRAND PRIX.
+                This project is unofficial and is not associated in any way with
+                the Formula 1 companies. F1, FORMULA ONE, FORMULA 1, FIA FORMULA
+                ONE WORLD CHAMPIONSHIP, GRAND PRIX.
               </p>
             </Col>
 
@@ -149,7 +149,7 @@ export default function HomePage() {
                 </a> */}
               </div>
             </Col>
-            <p className="smaller text-secondary">
+            <p className="smaller text-secondary text-center">
               {" "}
               {currentYear}© - Alessandro - All rights reserved.
             </p>
