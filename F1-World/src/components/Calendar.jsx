@@ -79,7 +79,9 @@ export default function Calendar() {
         <Col xs={12}>
           <Navbar expand="lg" className="mt-3 rounded-4 custom-nav">
             <Container fluid>
-              <Navbar.Brand className="text-white ms-2">F1 World</Navbar.Brand>
+              <Navbar.Brand className="text-white ms-2 fw-bold">
+                | F1 World |
+              </Navbar.Brand>
               <Navbar.Toggle aria-controls="navbarScroll" />
               <Navbar.Collapse id="navbarScroll">
                 <Nav

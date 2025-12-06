@@ -91,7 +91,9 @@ export default function SessionPage() {
     <Container fluid className="min-vh-100">
       <Navbar expand="lg" className="mt-3 rounded-4 custom-nav">
         <Container fluid>
-          <Navbar.Brand className="text-white ms-2">F1 World</Navbar.Brand>
+          <Navbar.Brand className="text-white fw-bold ms-2">
+            | F1 World |
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav

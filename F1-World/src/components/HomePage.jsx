@@ -2,6 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col, Card, Nav } from "react-bootstrap";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import "../components/HomeStyle.css";
 
 export default function HomePage() {
@@ -19,34 +20,72 @@ export default function HomePage() {
 
   const currentYear = new Date().getFullYear();
 
+  const CARD_RED_THEME = {
+    "--color-dark": "#2e171c",
+    "--color-medium": "#61232a",
+    "--color-light": "#3c191f",
+  };
+  const CARD_ORANGE_THEME = {
+    "--color-dark": "#723418",
+    "--color-medium": "#B85117",
+    "--color-light": "#8D3C17",
+  };
+  const CARD_BLUE_THEME = {
+    "--color-dark": "#132E44",
+    "--color-medium": "#234A6E",
+    "--color-light": "#173651",
+  };
+
   return (
     <Container fluid>
       <Row className="mt-5 mb-5">
         <Col md={12}>
-          <h1 className="loading-text fw-bold">F1 World</h1>
+          <h1 className="loading-text fw-bold text-center">F1 World</h1>
         </Col>
+        <p className="text-secondary text-center fw-bold">
+          <i class="bi bi-caret-down-fill"></i> Current top 3 drivers' world
+          championship <i class="bi bi-caret-down-fill"></i>
+        </p>
       </Row>
       <Row className="d-flex justify-content-evenly g-4">
-        <Col md={4} className="card-custom">
+        <Col
+          md={4}
+          className="card-custom d-flex flex-column justify-content-start align-items-center card-animation-base"
+          style={{ ...CARD_BLUE_THEME, animationDelay: "0s" }}
+        >
           <img
-            src="/src/assets/img/driver-img-1.png"
+            src="/src/assets/img/driver-img-blue.png"
             alt="driver-image"
             className="img-fluid"
           />
+          <p className="text-white fw-bold fs-5">Max Verstappen</p>
+          <p className="text-white fw-bold">P2</p>
         </Col>
-        <Col md={4} className="card-custom">
+        <Col
+          md={4}
+          className="card-custom d-flex flex-column justify-content-start align-items-center podium-top"
+          style={{ ...CARD_ORANGE_THEME, animationDelay: "0.4s" }}
+        >
           <img
-            src="/src/assets/img/driver-img-1.png"
+            src="/src/assets/img/driver-img-orange.png"
             alt="driver-image"
             className="img-fluid"
           />
+          <p className="text-white fw-bold fs-5">Lando Norris</p>
+          <p className="text-white fw-bold">P1</p>
         </Col>
-        <Col md={4} className="card-custom">
+        <Col
+          md={4}
+          className="card-custom d-flex flex-column justify-content-start align-items-center card-animation-base"
+          style={{ ...CARD_ORANGE_THEME, animationDelay: "0.8s" }}
+        >
           <img
-            src="/src/assets/img/driver-img-1.png"
+            src="/src/assets/img/driver-img-orange.png"
             alt="driver-image"
             className="img-fluid"
           />
+          <p className="text-white fw-bold fs-5">Oscar Piastri</p>
+          <p className="text-white fw-bold">P3</p>
         </Col>
       </Row>
 
@@ -90,7 +129,7 @@ export default function HomePage() {
           </Card>
         </Col>
       </Row>
-      <p className="text-white fs-3 mt-6 d-flex justify-content-center align-items-center">
+      <p className="text-white fs-3 mt-6 d-flex justify-content-center align-items-center card-animation-base">
         <i class="bi bi-caret-down-fill"></i>
       </p>
       <footer className="bg-dark text-white pt-4 pb-2 mt-footer mb-5 rounded-4 border border-1 border-danger">
