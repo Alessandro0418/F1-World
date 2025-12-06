@@ -17,6 +17,11 @@ body {
 }
 
 /* custom calssies */
+
+.text-underline-custom {
+  text-decoration: underline !important;
+}
+
 /* mt custom */
 .mt-6 {
   margin-top: 60px;
@@ -28,4 +33,8 @@ body {
 
 .mt-8 {
   margin-top: 80px;
+}
+
+.mt-footer {
+  margin-top: 8%;
 }

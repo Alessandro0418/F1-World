@@ -26,6 +26,9 @@ export default function SessionPage() {
   const handleGoCalendar = () => {
     navigate("/Calendar");
   };
+  const handleGoWeather = () => {
+    navigate("/Weather");
+  };
 
   const [results, setResults] = useState([]);
   const [session, setSession] = useState([]);
@@ -103,7 +106,7 @@ export default function SessionPage() {
                 Home
               </Nav.Link>
               <Nav.Link
-                className="text-white custom-nav-effect"
+                className="text-white custom-nav-effect fw-bold"
                 onClick={handleGoSession}
               >
                 Session Overview
@@ -114,7 +117,10 @@ export default function SessionPage() {
               >
                 Calendar
               </Nav.Link>
-              <Nav.Link className="text-white custom-nav-effect">
+              <Nav.Link
+                className="text-white custom-nav-effect"
+                onClick={handleGoWeather}
+              >
                 Weather
               </Nav.Link>
             </Nav>

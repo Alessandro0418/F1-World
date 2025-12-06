@@ -27,6 +27,9 @@ export default function Calendar() {
   const handleGoCalendar = () => {
     navigate("/Calendar");
   };
+  const handleGoWeather = () => {
+    navigate("/Weather");
+  };
   const [races, setRaces] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -97,12 +100,15 @@ export default function Calendar() {
                     Session Overview
                   </Nav.Link>
                   <Nav.Link
-                    className="text-white custom-nav-effect"
+                    className="text-white custom-nav-effect fw-bold"
                     onClick={handleGoCalendar}
                   >
                     Calendar
                   </Nav.Link>
-                  <Nav.Link className="text-white custom-nav-effect">
+                  <Nav.Link
+                    className="text-white custom-nav-effect"
+                    onClick={handleGoWeather}
+                  >
                     Weather
                   </Nav.Link>
                 </Nav>
