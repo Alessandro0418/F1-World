@@ -35,6 +35,11 @@ export default function HomePage() {
     "--color-medium": "#234A6E",
     "--color-light": "#173651",
   };
+  const CARD_GOLD_THEME = {
+    "--color-dark": "#C08227",
+    "--color-medium": "#E7B139",
+    "--color-light": "#D59A2D",
+  };
 
   return (
     <Container fluid>
@@ -49,7 +54,7 @@ export default function HomePage() {
       </Row>
       <Row className="d-flex justify-content-evenly g-4">
         <Col
-          md={4}
+          xs={4}
           className="card-custom d-flex flex-column justify-content-start align-items-center card-animation-base"
           style={{ ...CARD_BLUE_THEME, animationDelay: "0s" }}
         >
@@ -62,20 +67,20 @@ export default function HomePage() {
           <p className="text-white fw-bold">P2</p>
         </Col>
         <Col
-          md={4}
+          xs={4}
           className="card-custom d-flex flex-column justify-content-start align-items-center podium-top"
-          style={{ ...CARD_ORANGE_THEME, animationDelay: "0.4s" }}
+          style={{ ...CARD_GOLD_THEME, animationDelay: "0.4s" }}
         >
           <img
-            src="/src/assets/img/driver-img-orange.png"
+            src="/src/assets/img/driver-image-wdc.png"
             alt="driver-image"
             className="img-fluid"
           />
           <p className="text-white fw-bold fs-5">Lando Norris</p>
-          <p className="text-white fw-bold">P1</p>
+          <p className="text-white fw-bold">World Champion</p>
         </Col>
         <Col
-          md={4}
+          xs={4}
           className="card-custom d-flex flex-column justify-content-start align-items-center card-animation-base"
           style={{ ...CARD_ORANGE_THEME, animationDelay: "0.8s" }}
         >

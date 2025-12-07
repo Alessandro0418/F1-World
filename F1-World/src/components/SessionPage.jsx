@@ -89,7 +89,7 @@ export default function SessionPage() {
 
   return (
     <Container fluid className="min-vh-100">
-      <Navbar expand="lg" className="mt-3 rounded-4 custom-nav">
+      <Navbar expand="lg" className="mt-3 rounded-4 custom-nav custom-toggler">
         <Container fluid>
           <Navbar.Brand className="text-white fw-bold ms-2">
             | F1 World |

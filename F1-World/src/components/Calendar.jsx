@@ -77,7 +77,10 @@ export default function Calendar() {
     <Container fluid className="min-vh-100">
       <Row>
         <Col xs={12}>
-          <Navbar expand="lg" className="mt-3 rounded-4 custom-nav">
+          <Navbar
+            expand="lg"
+            className="mt-3 rounded-4 custom-nav custom-toggler"
+          >
             <Container fluid>
               <Navbar.Brand className="text-white ms-2 fw-bold">
                 | F1 World |

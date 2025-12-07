@@ -110,3 +110,48 @@
     animation-iteration-count: infinite;
   }
 }
+
+@media (max-width: 575.98px) {
+  .card-custom {
+    width: 100px;
+    height: 180px;
+    padding: 0;
+  }
+
+  .card-custom p {
+    font-size: 0.7rem !important;
+    margin: 0;
+    padding: 0;
+  }
+
+  .podium-top {
+    transform: translateY(-10px);
+  }
+
+  @keyframes podium-jump {
+    0%,
+    100% {
+      transform: translateY(-10px);
+    }
+    50% {
+      transform: translateY(-14px);
+    }
+  }
+
+  @keyframes card-jump {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-4px);
+    }
+  }
+  .podium-top {
+    transform: translateY(-10px);
+    animation-name: podium-jump;
+    animation-duration: 4s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+  }
+}

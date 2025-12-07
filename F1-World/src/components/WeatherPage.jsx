@@ -65,7 +65,7 @@ export default function WeatherPage() {
         <Col xs={12}>
           <Navbar
             expand="lg"
-            className="mt-3 rounded-4 custom-nav shadow-sm"
+            className="mt-3 rounded-4 custom-nav shadow-sm custom-toggler"
             variant="dark"
           >
             <Container fluid>
