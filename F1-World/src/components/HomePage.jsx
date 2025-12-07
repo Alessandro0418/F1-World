@@ -43,10 +43,23 @@ export default function HomePage() {
 
   return (
     <Container fluid>
-      <Row className="mt-5 mb-5">
+      <Row className="mt-4 mb-5">
         <Col md={12}>
           <h1 className="loading-text fw-bold text-center">F1 World</h1>
         </Col>
+
+        {/* season ended */}
+        <div className="d-flex justify-content-center align-content-center mb-1">
+          <div className="season-ended"></div>
+        </div>
+        <p className="text-center text-white fw-bold mt-0 mb-0 rounded-3">
+          2025 Season Ended
+        </p>
+        <div className="d-flex justify-content-center align-content-center mt-1 mb-2">
+          <div className="season-ended"></div>
+        </div>
+        {/* --------- */}
+
         <p className="text-secondary text-center fw-bold">
           <i class="bi bi-caret-down-fill"></i> Current top 3 drivers' world
           championship <i class="bi bi-caret-down-fill"></i>
@@ -77,7 +90,7 @@ export default function HomePage() {
             className="img-fluid"
           />
           <p className="text-white fw-bold fs-5">Lando Norris</p>
-          <p className="text-white fw-bold">World Champion</p>
+          <p className="text-white fw-bold">🏆 World Champion 🏆</p>
         </Col>
         <Col
           xs={4}
@@ -134,7 +147,7 @@ export default function HomePage() {
           </Card>
         </Col>
       </Row>
-      <p className="text-white fs-3 mt-6 d-flex justify-content-center align-items-center card-animation-base">
+      <p className="text-white fs-3 mt-4 d-flex justify-content-center align-items-center card-animation-base">
         <i class="bi bi-caret-down-fill"></i>
       </p>
       <footer className="bg-dark text-white pt-4 pb-2 mt-footer mb-5 rounded-4 border border-1 border-danger">

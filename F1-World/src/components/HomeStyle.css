@@ -155,3 +155,20 @@
     animation-iteration-count: infinite;
   }
 }
+
+/* custom classes */
+
+.season-ended {
+  background-image: url("/src/assets/img/checkered-pattern.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 42%;
+  height: 2px;
+}
+
+@media (min-width: 768px) {
+  .season-ended {
+    width: 9%;
+  }
+}

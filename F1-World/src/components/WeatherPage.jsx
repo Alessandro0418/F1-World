@@ -11,6 +11,8 @@ import {
   Badge,
 } from "react-bootstrap";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import { circuitCoordinates } from "../utils/circuitMap";
+import MapComponent from "./MapComponent";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
@@ -30,6 +32,7 @@ export default function WeatherPage() {
     navigate("/Weather");
   };
 
+  const [circuitData, setCircuitData] = useState(null);
   const [weatherData, setWeatherData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -41,12 +44,52 @@ export default function WeatherPage() {
         const resWeather = await fetch(
           "https://api.openf1.org/v1/weather?session_key=latest"
         );
-        const data = await resWeather.json();
+        const wData = await resWeather.json();
 
-        if (data.length > 0) {
-          setWeatherData(data[0]);
+        if (wData.length > 0) {
+          setWeatherData(wData[0]);
         } else {
           setError("No weather data found for the latest session");
+          return;
+        }
+
+        const latestWeather = wData[wData.length - 1];
+        setWeatherData(latestWeather);
+
+        const meetingKey = latestWeather.meeting_key;
+
+        // fetch dati meeting
+        if (meetingKey) {
+          const resMeeting = await fetch(
+            `https://api.openf1.org/v1/meetings?meeting_key=${meetingKey}`
+          );
+          const mData = await resMeeting.json();
+
+          if (mData.length > 0) {
+            const meeting = mData[0];
+            const locationName = meeting.location;
+
+            // mappa statica
+            const coords = circuitCoordinates[locationName];
+
+            // fallback
+            let circuitLat = 44.3439;
+            let circuitLng = 11.7142;
+
+            if (coords) {
+              circuitLat = coords.lat;
+              circuitLng = coords.lng;
+            }
+
+            const circuitName = meeting.circuit_short_name || locationName;
+
+            setCircuitData({
+              lat: circuitLat,
+              lng: circuitLng,
+              name: circuitName,
+              location: locationName,
+            });
+          }
         }
       } catch (err) {
         console.error(err);
@@ -113,6 +156,12 @@ export default function WeatherPage() {
         <Col xs={12} className="text-center">
           <h1 className="display-4 text-white fw-bold">Weather Overview</h1>
           <p className="text-white">Weather & Track Conditions</p>
+          {circuitData && (
+            <h4 className="text-white">
+              <i class="bi bi-geo-alt me-2"></i>
+              {circuitData.location}
+            </h4>
+          )}
         </Col>
       </Row>
 
@@ -127,80 +176,97 @@ export default function WeatherPage() {
           {error && <Alert variant="danger">{error}</Alert>}
 
           {!loading && !error && weatherData && (
-            <Row className="justify-content-center">
-              <Col xs={12} md={5} className="mb-4 mb-md-0">
-                <div
-                  className="p-4 bg-dark border rounded-3 text-white text-start shadow-lg"
-                  style={{ minHeight: "300px", border: "1px solid #444" }}
-                >
-                  <h5 className="fw-bold text-center mb-4">
-                    <i className="bi bi-cloud-sun me-2 text-warning"></i>
-                    Weather
-                  </h5>
-                  <ul className="list-unstyled fw-light">
-                    <li>
-                      Air Temperature:{" "}
-                      <span className="fw-normal float-end">
-                        {weatherData.air_temperature}°C
-                      </span>
-                    </li>
-                    <li>
-                      Humidity:{" "}
-                      <span className="fw-normal float-end">
-                        {weatherData.humidity}%
-                      </span>
-                    </li>
-                    <li>
-                      Pressure:{" "}
-                      <span className="fw-normal float-end">
-                        {weatherData.pressure} mbar
-                      </span>
-                    </li>
-                  </ul>
-                </div>
-              </Col>
+            <>
+              <Row className="justify-content-center">
+                <Col xs={12} md={5} className="mb-4 mb-md-0">
+                  <div
+                    className="p-4 bg-dark border rounded-3 text-white text-start shadow-lg"
+                    style={{ minHeight: "300px", border: "1px solid #444" }}
+                  >
+                    <h5 className="fw-bold text-center mb-4">
+                      <i className="bi bi-cloud-sun me-2 text-warning"></i>
+                      Weather
+                    </h5>
+                    <ul className="list-unstyled fw-light">
+                      <li>
+                        Air Temperature:{" "}
+                        <span className="fw-normal float-end">
+                          {weatherData.air_temperature}°C
+                        </span>
+                      </li>
+                      <li>
+                        Humidity:{" "}
+                        <span className="fw-normal float-end">
+                          {weatherData.humidity}%
+                        </span>
+                      </li>
+                      <li>
+                        Pressure:{" "}
+                        <span className="fw-normal float-end">
+                          {weatherData.pressure} mbar
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                </Col>
 
-              <Col xs={12} md={5}>
-                <div
-                  className="p-4 bg-dark border rounded-3 text-white text-start shadow-lg"
-                  style={{ minHeight: "300px", border: "1px solid #444" }}
-                >
-                  <h5 className="fw-bold text-center mb-4">
-                    <i className="bi bi-thermometer-half me-2 text-info"></i>
-                    Track Conditions & Wind
-                  </h5>
-                  <ul className="list-unstyled fw-light">
-                    <li>
-                      Track Temperature:{" "}
-                      <span className="fw-normal float-end">
-                        {weatherData.track_temperature}°C
-                      </span>
-                    </li>
-                    <li>
-                      Wind Speed:{" "}
-                      <span className="fw-normal float-end">
-                        {weatherData.wind_speed} m/s
-                      </span>
-                    </li>
-                    <li>
-                      Wind Direction:{" "}
-                      <span className="fw-normal float-end">
-                        {weatherData.wind_direction}°
-                      </span>
-                    </li>
-                  </ul>
-                </div>
-              </Col>
-              <span className="mt-4 p-2 rounded text-center text-white">
-                Rain:{" "}
-                <Badge
-                  bg={weatherData.rainfall ? "danger" : "secondary"}
-                  className="ms-1"
-                >
-                  {weatherData.rainfall ? "YES" : "NO"}
-                </Badge>
-              </span>
-            </Row>
+                <Col xs={12} md={5}>
+                  <div
+                    className="p-4 bg-dark border rounded-3 text-white text-start shadow-lg"
+                    style={{ minHeight: "300px", border: "1px solid #444" }}
+                  >
+                    <h5 className="fw-bold text-center mb-4">
+                      <i className="bi bi-thermometer-half me-2 text-info"></i>
+                      Track Conditions & Wind
+                    </h5>
+                    <ul className="list-unstyled fw-light">
+                      <li>
+                        Track Temperature:{" "}
+                        <span className="fw-normal float-end">
+                          {weatherData.track_temperature}°C
+                        </span>
+                      </li>
+                      <li>
+                        Wind Speed:{" "}
+                        <span className="fw-normal float-end">
+                          {weatherData.wind_speed} m/s
+                        </span>
+                      </li>
+                      <li>
+                        Wind Direction:{" "}
+                        <span className="fw-normal float-end">
+                          {weatherData.wind_direction}°
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                </Col>
+                <span className="mt-4 p-2 rounded text-center text-white fw-bold">
+                  Rain:{" "}
+                  <Badge
+                    bg={weatherData.rainfall ? "danger" : "secondary"}
+                    className="ms-1"
+                  >
+                    {weatherData.rainfall ? "YES" : "NO"}
+                  </Badge>
+                </span>
+              </Row>
+
+              {circuitData && circuitData.lat && (
+                <Row className="justify-content-center mt-5">
+                  <Col xs={12} className="text-center mb-3">
+                    <h3 className="text-white">Track Location</h3>
+                  </Col>
+                  <Col xs={12} md={10}>
+                    <MapComponent
+                      lat={circuitData.lat}
+                      lng={circuitData.lng}
+                      circuitName={circuitData.name}
+                    />
+                  </Col>
+                </Row>
+              )}
+            </>
           )}
         </Col>
       </Row>
