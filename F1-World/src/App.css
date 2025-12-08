@@ -12,6 +12,7 @@ body {
   background-image: url("/src/assets/img/F1World-bg.jpg");
   background-size: cover;
   background-repeat: no-repeat;
+  backdrop-filter: blur(8px);
   font-family: "Saira", sans-serif;
   user-select: none;
 }

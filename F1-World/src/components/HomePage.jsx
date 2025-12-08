@@ -90,7 +90,7 @@ export default function HomePage() {
             className="img-fluid"
           />
           <p className="text-white fw-bold fs-5">Lando Norris</p>
-          <p className="text-white fw-bold">🏆 World Champion 🏆</p>
+          <p className="text-white fw-bold">World Champion</p>
         </Col>
         <Col
           xs={4}
