@@ -1,4 +1,4 @@
-import "./weatherStylePage.css";
+import "./WeatherStylePage.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
   Container,
