@@ -72,7 +72,7 @@ export default function HomePage() {
           style={{ ...CARD_BLUE_THEME, animationDelay: "0s" }}
         >
           <img
-            src="/src/assets/img/driver-img-blue.png"
+            src="public/img/driver-img-blue.png"
             alt="driver-image"
             className="img-fluid"
           />
@@ -85,7 +85,7 @@ export default function HomePage() {
           style={{ ...CARD_GOLD_THEME, animationDelay: "0.4s" }}
         >
           <img
-            src="/src/assets/img/driver-image-wdc.png"
+            src="public/img/driver-image-wdc.png"
             alt="driver-image"
             className="img-fluid"
           />
@@ -98,7 +98,7 @@ export default function HomePage() {
           style={{ ...CARD_ORANGE_THEME, animationDelay: "0.8s" }}
         >
           <img
-            src="/src/assets/img/driver-img-orange.png"
+            src="public/img/driver-img-orange.png"
             alt="driver-image"
             className="img-fluid"
           />
