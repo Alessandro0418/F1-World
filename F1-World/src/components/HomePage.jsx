@@ -164,6 +164,11 @@ export default function HomePage() {
                 the Formula 1 companies. F1, FORMULA ONE, FORMULA 1, FIA FORMULA
                 ONE WORLD CHAMPIONSHIP, GRAND PRIX.
               </p>
+
+              <p className="smaller text-secondary">
+                This is a personal and educational project created solely for
+                portfolio purposes, with no commercial intent.
+              </p>
             </Col>
 
             <Col md={4} className="mb-3 mb-md-0">
