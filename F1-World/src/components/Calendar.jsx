@@ -1,4 +1,4 @@
-import "../components/CalendarStyle.css";
+import "./CalendarStyle.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
   Container,

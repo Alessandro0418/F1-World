@@ -3,7 +3,7 @@ import { Container, Row, Col, Card, Nav } from "react-bootstrap";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import "../components/HomeStyle.css";
+import "./HomeStyle.css";
 
 export default function HomePage() {
   const navigate = useNavigate();
