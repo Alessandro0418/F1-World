@@ -9,7 +9,7 @@
 }
 
 body {
-  background-image: url("public/img/F1World-bg.jpg");
+  background-image: url("/img/F1World-bg.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   backdrop-filter: blur(8px);
