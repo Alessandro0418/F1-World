@@ -58,7 +58,7 @@ export default function HomePage() {
         <div className="d-flex justify-content-center align-content-center mt-1 mb-2">
           <div className="season-ended"></div>
         </div>
-        {/* --------- */}
+        {/* ---------- */}
 
         <p className="text-secondary text-center fw-bold">
           <i class="bi bi-caret-down-fill"></i> Current top 3 drivers' world
