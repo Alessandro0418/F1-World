@@ -1,62 +1,166 @@
 /* title */
-.loading-text {
+.title-main {
   font-family: "Saira", sans-serif;
   place-self: center;
-  background: linear-gradient(90deg, #7bb5de, #d84548, #7bb5de) -100%/ 200%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  font-size: 100px;
-  animation: shimmer 2s linear infinite;
-}
-
-@keyframes shimmer {
-  to {
-    background-position: 100%;
-  }
-}
-
-@media (forced-colors: active) {
-  p {
-    background: #212121;
-    color: aquamarine;
-  }
+  font-size: 90px;
 }
 
 /* custom cards */
 .card-custom {
-  --color-dark: #2e171c;
-  --color-medium: #61232a;
-  --color-light: #3c191f;
-  position: relative;
-  width: 220px;
-  height: 340px;
-  padding: 0px;
-  background: #0a0f1c;
-  clip-path: polygon(0% 0%, 100% 0, 100% 85%, 50% 100%, 0 85%);
+  width: 190px;
+  height: 190px;
+  border-radius: 44px;
+  /* background: linear-gradient(145deg, #242429, #242429); */
+  /* box-shadow:
+    2px 3px 3px #24242993,
+    2px 3px 3px #24242993; */
+}
+
+/* CARD BACKGROUNDS */
+.card-custom.card-1 {
+  background: linear-gradient(145deg, #27f4d2, #242429);
+  box-shadow: 2px 3px 3px #e5e5e793;
+}
+
+.card-custom.card-2 {
+  background: linear-gradient(145deg, #27f4d2, #242429);
+  box-shadow: 2px 3px 3px #e0b80793;
+}
+
+.card-custom.card-3 {
+  background: linear-gradient(145deg, #e8002d, #242429);
+  box-shadow: 2px 3px 3px #c97a0493;
+}
+
+/* common elements */
+.avatar {
+  width: 45px;
+  height: 45px;
+  display: inline-block;
+  margin: 30px 15px 20px 25px;
+  border-radius: 14px;
+  text-align: center;
+  line-height: 45px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.info {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 33px;
+  width: 95px;
+}
+
+.info-1 {
+  display: inline-block;
+  height: 20px;
+  width: 100%;
+  border-radius: 6px;
+  line-height: 20px;
+  font-size: 11px;
+  font-weight: bold;
+  padding-left: 4px;
+}
+
+.info-2 {
+  display: inline-block;
+  height: 11px;
+  width: 50%;
+  border-radius: 3px;
+  line-height: 11px;
+  font-size: 9px;
+  font-weight: bold;
+  padding-left: 8px;
+}
+
+.content-1 {
+  width: 80%;
+  height: 40px;
+  margin: auto;
+  border-radius: 12px;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
+  font-size: 15px;
+  font-weight: bold;
 }
 
-.card-custom::before {
-  background: linear-gradient(
-    135deg,
-    var(--color-dark),
-    var(--color-medium),
-    var(--color-light),
-    var(--color-dark)
-  );
-  content: "";
-  position: absolute;
-  inset: 0;
-  clip-path: inherit;
-  z-index: -1;
-  filter: blur(10px);
+.content-2 {
+  width: 60%;
+  height: 18px;
+  margin: 10px 0 0 20px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: bold;
 }
 
-.card-custom img {
-  clip-path: polygon(0% 0%, 100% 0, 100% 85%, 0% 100%, 0 100%);
+/* custom card-1 */
+.card-custom.card-1 .avatar {
+  background-color: #ffffff8f;
+}
+
+.card-custom.card-1 .info-1 {
+  background-color: #ffffff8f;
+}
+
+.card-custom.card-1 .info-2 {
+  background-color: #ffffff8f;
+}
+.card-custom.card-1 .content-1 {
+  background-color: #ffffff8f;
+}
+
+.card-custom.card-1 .content-2 {
+  background-color: #ffffff8f;
+}
+
+/* custom card-2 */
+.card-custom.card-2 .avatar {
+  background-color: #ffffff8f;
+}
+
+.card-custom.card-2 .info-1 {
+  background-color: #ffffff8f;
+}
+
+.card-custom.card-2 .info-2 {
+  background-color: #ffffff8f;
+}
+
+.card-custom.card-2 .content-1 {
+  background-color: #ffffff8f;
+}
+
+.card-custom.card-2 .content-2 {
+  background-color: #ffffff8f;
+}
+
+/* custom card-3 */
+.card-custom.card-3 .avatar {
+  background-color: #ffffff8f;
+}
+
+.card-custom.card-3 .info-1 {
+  background-color: #ffffff8f;
+}
+
+.card-custom.card-3 .info-2 {
+  background-color: #ffffff8f;
+}
+
+.card-custom.card-3 .content-1 {
+  background-color: #ffffff8f;
+}
+
+.card-custom.card-3 .content-2 {
+  background-color: #ffffff8f;
 }
 
 /* custom cards 2 */
@@ -113,7 +217,7 @@
 
 @media (max-width: 575.98px) {
   .card-custom {
-    width: 100px;
+    width: 200;
     height: 180px;
     padding: 0;
   }

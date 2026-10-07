@@ -20,36 +20,17 @@ export default function HomePage() {
 
   const currentYear = new Date().getFullYear();
 
-  const CARD_RED_THEME = {
-    "--color-dark": "#2e171c",
-    "--color-medium": "#61232a",
-    "--color-light": "#3c191f",
-  };
-  const CARD_ORANGE_THEME = {
-    "--color-dark": "#723418",
-    "--color-medium": "#B85117",
-    "--color-light": "#8D3C17",
-  };
-  const CARD_BLUE_THEME = {
-    "--color-dark": "#132E44",
-    "--color-medium": "#234A6E",
-    "--color-light": "#173651",
-  };
-  const CARD_GOLD_THEME = {
-    "--color-dark": "#C08227",
-    "--color-medium": "#E7B139",
-    "--color-light": "#D59A2D",
-  };
-
   return (
     <Container fluid>
       <Row className="mt-4 mb-5">
         <Col md={12}>
-          <h1 className="loading-text fw-bold text-center">F1 World</h1>
+          <h1 className="text-center text-white fw-bolder title-main">
+            F1 World
+          </h1>
         </Col>
 
         {/* season ended */}
-        <div className="d-flex justify-content-center align-content-center mb-1">
+        {/* <div className="d-flex justify-content-center align-content-center mb-1">
           <div className="season-ended"></div>
         </div>
         <p className="text-center text-white fw-bold mt-0 mb-0 rounded-3">
@@ -57,7 +38,7 @@ export default function HomePage() {
         </p>
         <div className="d-flex justify-content-center align-content-center mt-1 mb-2">
           <div className="season-ended"></div>
-        </div>
+        </div> */}
         {/* ---------- */}
 
         <p className="text-secondary text-center fw-bold">
@@ -65,45 +46,50 @@ export default function HomePage() {
           championship <i class="bi bi-caret-down-fill"></i>
         </p>
       </Row>
-      <Row className="d-flex justify-content-evenly g-4">
-        <Col
-          xs={4}
-          className="card-custom d-flex flex-column justify-content-start align-items-center card-animation-base"
-          style={{ ...CARD_BLUE_THEME, animationDelay: "0s" }}
-        >
-          <img
-            src="/img/driver-img-blue.png"
-            alt="driver-image"
-            className="img-fluid"
-          />
-          <p className="text-white fw-bold fs-5">Max Verstappen</p>
-          <p className="text-white fw-bold">P2</p>
+      <Row className="g-4">
+        {/* CARD 1 */}
+        <Col xs={12} md={4} className="d-flex justify-content-center">
+          <div className="card-custom card-1">
+            <label className="avatar">2°</label>
+
+            <label className="info">
+              <span className="info-1">George Russell</span>
+              <span className="info-2">236 PT</span>
+            </label>
+
+            <div className="content-1">MERCEDES</div>
+            <div className="content-2">Italian</div>
+          </div>
         </Col>
-        <Col
-          xs={4}
-          className="card-custom d-flex flex-column justify-content-start align-items-center podium-top"
-          style={{ ...CARD_GOLD_THEME, animationDelay: "0.4s" }}
-        >
-          <img
-            src="/img/driver-image-wdc.png"
-            alt="driver-image"
-            className="img-fluid"
-          />
-          <p className="text-white fw-bold fs-5">Lando Norris</p>
-          <p className="text-white fw-bold">World Champion</p>
+
+        {/* CARD 2 */}
+        <Col xs={12} md={4} className="d-flex justify-content-center">
+          <div className="card-custom card-2">
+            <label className="avatar">1°</label>
+
+            <label className="info">
+              <span className="info-1">KIMI ANTONELLI</span>
+              <span className="info-2">320 PT</span>
+            </label>
+
+            <div className="content-1">MERCEDES</div>
+            <div className="content-2">British</div>
+          </div>
         </Col>
-        <Col
-          xs={4}
-          className="card-custom d-flex flex-column justify-content-start align-items-center card-animation-base"
-          style={{ ...CARD_ORANGE_THEME, animationDelay: "0.8s" }}
-        >
-          <img
-            src="/img/driver-img-orange.png"
-            alt="driver-image"
-            className="img-fluid"
-          />
-          <p className="text-white fw-bold fs-5">Oscar Piastri</p>
-          <p className="text-white fw-bold">P3</p>
+
+        {/* CARD 3 */}
+        <Col xs={12} md={4} className="d-flex justify-content-center">
+          <div className="card-custom card-3">
+            <label className="avatar">3°</label>
+
+            <label className="info">
+              <span className="info-1">Lewis Hamilton</span>
+              <span className="info-2">214 PT</span>
+            </label>
+
+            <div className="content-1">FERRARI</div>
+            <div className="content-2">British</div>
+          </div>
         </Col>
       </Row>
 
