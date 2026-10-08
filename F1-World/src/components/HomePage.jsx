@@ -117,7 +117,12 @@ export default function HomePage() {
             md={4}
             className="d-flex justify-content-center"
           >
-            <div className={`card-custom card-${index + 1}`}>
+            <div
+              className={`card-custom card-${index + 1}`}
+              style={{
+                "--team-color": `#${driver.team_colour}`,
+              }}
+            >
               <label className="avatar">{driver.position_current}°</label>
 
               <label className="info">
@@ -153,7 +158,7 @@ export default function HomePage() {
           >
             <Card.Body>
               <i className="bi bi-calendar3 fs-2"></i>
-              <Card.Title className="mt-3">Upcoming Races</Card.Title>
+              <Card.Title className="mt-3">Season Calendar</Card.Title>
               <p className="mt-2">Calendar Preview</p>
             </Card.Body>
           </Card>

@@ -20,19 +20,26 @@
 }
 
 /* CARD BACKGROUNDS */
+
 .card-custom.card-1 {
-  background: linear-gradient(145deg, #27f4d2, #242429);
-  box-shadow: 2px 3px 3px #e5e5e793;
+  background: #242429;
+  border: 1.5px solid;
+  border-color: var(--team-color);
+  /* box-shadow: 2px 3px 3px #e5e5e793; */
 }
 
 .card-custom.card-2 {
-  background: linear-gradient(145deg, #27f4d2, #242429);
-  box-shadow: 2px 3px 3px #e0b80793;
+  background: #242429;
+  border: 1.5px solid;
+  border-color: var(--team-color);
+  /* box-shadow: 2px 3px 3px #e0b80793; */
 }
 
 .card-custom.card-3 {
-  background: linear-gradient(145deg, #e8002d, #242429);
-  box-shadow: 2px 3px 3px #c97a0493;
+  background: #242429;
+  border: 1.5px solid;
+  border-color: var(--team-color);
+  /* box-shadow: 2px 3px 3px #c97a0493; */
 }
 
 /* common elements */
@@ -103,64 +110,79 @@
 
 /* custom card-1 */
 .card-custom.card-1 .avatar {
-  background-color: #ffffff8f;
+  background-color: #ffffff2d;
+  color: white;
 }
 
 .card-custom.card-1 .info-1 {
-  background-color: #ffffff8f;
+  background-color: #ffffff2d;
+  color: white;
 }
 
 .card-custom.card-1 .info-2 {
-  background-color: #ffffff8f;
+  background-color: #ffffff2d;
+  color: white;
 }
 .card-custom.card-1 .content-1 {
-  background-color: #ffffff8f;
+  background-color: #ffffff2d;
+  color: white;
 }
 
 .card-custom.card-1 .content-2 {
-  background-color: #ffffff8f;
+  background-color: #ffffff2d;
+  color: white;
 }
 
 /* custom card-2 */
 .card-custom.card-2 .avatar {
-  background-color: #ffffff8f;
+  background-color: #ffffff2d;
+  color: white;
 }
 
 .card-custom.card-2 .info-1 {
-  background-color: #ffffff8f;
+  background-color: #ffffff2d;
+  color: white;
 }
 
 .card-custom.card-2 .info-2 {
-  background-color: #ffffff8f;
+  background-color: #ffffff2d;
+  color: white;
 }
 
 .card-custom.card-2 .content-1 {
-  background-color: #ffffff8f;
+  background-color: #ffffff2d;
+  color: white;
 }
 
 .card-custom.card-2 .content-2 {
-  background-color: #ffffff8f;
+  background-color: #ffffff2d;
+  color: white;
 }
 
 /* custom card-3 */
 .card-custom.card-3 .avatar {
-  background-color: #ffffff8f;
+  background-color: #ffffff2d;
+  color: white;
 }
 
 .card-custom.card-3 .info-1 {
-  background-color: #ffffff8f;
+  background-color: #ffffff2d;
+  color: white;
 }
 
 .card-custom.card-3 .info-2 {
-  background-color: #ffffff8f;
+  background-color: #ffffff2d;
+  color: white;
 }
 
 .card-custom.card-3 .content-1 {
-  background-color: #ffffff8f;
+  background-color: #ffffff2d;
+  color: white;
 }
 
 .card-custom.card-3 .content-2 {
-  background-color: #ffffff8f;
+  background-color: #ffffff2d;
+  color: white;
 }
 
 /* custom cards 2 */
