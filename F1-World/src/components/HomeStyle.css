@@ -1,11 +1,15 @@
 /* title */
-.title-main {
-  font-family: "Saira", sans-serif;
-  place-self: center;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  font-size: 90px;
+.title-main img {
+  width: 350px;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+@media (max-width: 576px) {
+  .title-main img {
+    width: 250px;
+  }
 }
 
 /* custom cards */

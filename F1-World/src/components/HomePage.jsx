@@ -85,10 +85,8 @@ export default function HomePage() {
   return (
     <Container fluid>
       <Row className="mt-4 mb-5">
-        <Col md={12}>
-          <h1 className="text-center text-white fw-bolder title-main">
-            F1 World
-          </h1>
+        <Col md={12} className="text-center title-main">
+          <img src="/img/F1_world_logo_2.png" alt="Logo" />
         </Col>
 
         {/* season ended */}
