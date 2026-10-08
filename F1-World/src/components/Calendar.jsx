@@ -30,23 +30,80 @@ export default function Calendar() {
   const handleGoWeather = () => {
     navigate("/Weather");
   };
-  const [races, setRaces] = useState([]);
+
+  const [meetings, setMeetings] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     async function fetchData() {
       try {
-        // fetch session
-        const reSession = await fetch(
-          "https://api.openf1.org/v1/sessions?year=2023&session_name=Race"
-        );
-        const data = await reSession.json();
+        const year = new Date().getFullYear();
 
-        const sortedData = data.sort(
-          (a, b) => new Date(a.date_start) - new Date(b.date_start)
+        const response = await fetch(
+          `https://api.openf1.org/v1/sessions?year=${year}`,
         );
-        setRaces(sortedData);
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch sessions");
+        }
+
+        const data = await response.json();
+
+        const sortedSessions = data
+          .filter((session) => !session.is_cancelled)
+          .sort((a, b) => new Date(a.date_start) - new Date(b.date_start));
+
+        const groupedMeetings = Object.values(
+          sortedSessions.reduce((acc, session) => {
+            const key = session.meeting_key;
+
+            if (!acc[key]) {
+              acc[key] = {
+                meeting_key: key,
+                country_name: session.country_name,
+                location: session.location,
+                circuit_short_name: session.circuit_short_name,
+                country_code: session.country_code,
+                sessions: [],
+              };
+            }
+
+            acc[key].sessions.push(session);
+
+            return acc;
+          }, {}),
+        );
+
+        setMeetings(groupedMeetings);
+
+        const now = new Date();
+
+        let activeIndex = groupedMeetings.findIndex((meeting) => {
+          const start = new Date(meeting.sessions[0].date_start);
+
+          const end = new Date(
+            meeting.sessions[meeting.sessions.length - 1].date_end,
+          );
+
+          return now >= start && now <= end;
+        });
+
+        if (activeIndex === -1) {
+          activeIndex = groupedMeetings.findIndex((meeting) => {
+            const start = new Date(meeting.sessions[0].date_start);
+
+            return start > now;
+          });
+        }
+
+        if (activeIndex === -1) {
+          activeIndex = groupedMeetings.length - 1;
+        }
+
+        setCurrentIndex(activeIndex);
       } catch (err) {
         console.error(err);
         setError("Could not fetch calendar data");
@@ -66,11 +123,43 @@ export default function Calendar() {
     return result;
   };
 
-  const rows = chunkArray(races, 4);
-
   const formatDate = (dateString) => {
-    const options = { day: "numeric", month: "short" };
-    return new Date(dateString).toLocaleDateString("it-IT", options);
+    return new Date(dateString).toLocaleDateString("it-IT", {
+      day: "numeric",
+      month: "short",
+    });
+  };
+
+  const formatTime = (dateString) => {
+    return new Date(dateString).toLocaleTimeString("it-IT", {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+  };
+
+  const goPrevious = () => {
+    setCurrentIndex((prev) => (prev === 0 ? meetings.length - 1 : prev - 1));
+  };
+
+  const goNext = () => {
+    setCurrentIndex((prev) => (prev === meetings.length - 1 ? 0 : prev + 1));
+  };
+
+  // card visibili del carosello
+  const getCardClass = (index) => {
+    if (index === currentIndex) {
+      return "carousel-card active";
+    }
+
+    if (index === (currentIndex - 1 + meetings.length) % meetings.length) {
+      return "carousel-card previous";
+    }
+
+    if (index === (currentIndex + 1) % meetings.length) {
+      return "carousel-card next";
+    }
+
+    return "carousel-card hidden";
   };
 
   return (
@@ -142,58 +231,76 @@ export default function Calendar() {
 
           {!loading && !error && (
             <div className="table-responsive rounded-3 shadow-lg">
-              <Table
-                bordered
-                variant="dark"
-                className="text-center m-0 calendar-table"
-              >
-                <tbody>
-                  {rows.map((row, rowIndex) => (
-                    <tr key={rowIndex}>
-                      {row.map((race, colIndex) => (
-                        <td
-                          key={race.session_key}
-                          className="p-3 position-relative align-top hover-effect"
-                          style={{
-                            height: "180px",
-                            width: "25%",
-                            border: "1px solid #444",
-                          }}
-                        >
-                          <div className="d-flex justify-content-between mb-3">
-                            <span className="badge bg-secondary opacity-50">
-                              R{rowIndex * 4 + colIndex + 1}
+              {!loading && !error && meetings.length > 0 && (
+                <div className="calendar-carousel">
+                  <button
+                    className="carousel-arrow carousel-arrow-left"
+                    onClick={goPrevious}
+                  >
+                    <i className="bi bi-chevron-left"></i>
+                  </button>
+
+                  <div className="carousel-track">
+                    {meetings.map((meeting, index) => (
+                      <div
+                        key={meeting.meeting_key}
+                        className={getCardClass(index)}
+                      >
+                        {/* HEADER */}
+                        <div className="race-header">
+                          <div>
+                            <span className="race-country">
+                              {meeting.country_name}
                             </span>
-                            <Badge bg="danger">{race.session_name}</Badge>
+
+                            <h2>{meeting.location}</h2>
+
+                            <span className="race-circuit">
+                              {meeting.circuit_short_name}
+                            </span>
                           </div>
 
-                          <h5 className="fw-bold mb-1">{race.country_name}</h5>
-                          <small className="text-white d-block mb-3 text-truncate">
-                            {race.circuit_short_name}
-                          </small>
+                          <div className="race-round">R{index + 1}</div>
+                        </div>
 
-                          <div
-                            className="mt-auto p-2 rounded d-inline-block w-100"
-                            style={{
-                              backgroundColor: "rgba(255,255,255,0.05)",
-                            }}
-                          >
-                            <i className="bi bi-calendar3 me-2 text-danger"></i>
-                            {formatDate(race.date_start)}
-                          </div>
-                        </td>
-                      ))}
+                        {/* DATE */}
+                        <div className="race-date">
+                          <i className="bi bi-calendar3"></i>
 
-                      {Array.from({ length: 4 - row.length }).map((_, i) => (
-                        <td
-                          key={`empty-${i}`}
-                          className="bg-black opacity-25"
-                        ></td>
-                      ))}
-                    </tr>
-                  ))}
-                </tbody>
-              </Table>
+                          <span>
+                            {formatDate(meeting.sessions[0].date_start)}
+                          </span>
+                        </div>
+
+                        {/* SESSIONS */}
+                        <div className="sessions-list">
+                          {meeting.sessions.map((session) => (
+                            <div
+                              className="session-row"
+                              key={session.session_key}
+                            >
+                              <span className="session-name">
+                                {session.session_name}
+                              </span>
+
+                              <span className="session-time">
+                                {formatTime(session.date_start)}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <button
+                    className="carousel-arrow carousel-arrow-right"
+                    onClick={goNext}
+                  >
+                    <i className="bi bi-chevron-right"></i>
+                  </button>
+                </div>
+              )}
             </div>
           )}
         </Col>
