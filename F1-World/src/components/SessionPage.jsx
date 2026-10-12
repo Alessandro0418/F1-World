@@ -40,13 +40,13 @@ export default function SessionPage() {
       try {
         //fetch 1 session results
         const resResults = await fetch(
-          "https://api.openf1.org/v1/session_result?session_key=latest"
+          "https://api.openf1.org/v1/session_result?session_key=latest",
         );
         const resultsData = await resResults.json();
 
         //fetch 2 drivers
         const resDrivers = await fetch(
-          "https://api.openf1.org/v1/drivers?session_key=latest"
+          "https://api.openf1.org/v1/drivers?session_key=latest",
         );
         const driversData = await resDrivers.json();
 
@@ -60,7 +60,7 @@ export default function SessionPage() {
 
         // fetch 3 Session
         const reSession = await fetch(
-          "https://api.openf1.org/v1/sessions?session_key=latest"
+          "https://api.openf1.org/v1/sessions?session_key=latest",
         );
         const sessionData = await reSession.json();
         if (sessionData.length > 0) {
@@ -68,12 +68,17 @@ export default function SessionPage() {
         }
 
         const merged = resultsData
-          .sort((a, b) => a.position - b.position)
           .map((r) => ({
             ...r,
             last_name: driverMap[r.driver_number]?.last_name || "Unknown",
             team_colour: driverMap[r.driver_number]?.team_colour || "FFFFFF",
-          }));
+          }))
+          .sort((a, b) => {
+            if (a.dnf !== b.dnf) {
+              return a.dnf ? 1 : -1;
+            }
+            return a.position - b.position;
+          });
 
         setResults(merged);
       } catch (err) {

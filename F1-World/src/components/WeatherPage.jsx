@@ -42,7 +42,7 @@ export default function WeatherPage() {
       try {
         // fetch weather
         const resWeather = await fetch(
-          "https://api.openf1.org/v1/weather?session_key=latest"
+          "https://api.openf1.org/v1/weather?session_key=latest",
         );
         const wData = await resWeather.json();
 
@@ -61,13 +61,20 @@ export default function WeatherPage() {
         // fetch dati meeting
         if (meetingKey) {
           const resMeeting = await fetch(
-            `https://api.openf1.org/v1/meetings?meeting_key=${meetingKey}`
+            `https://api.openf1.org/v1/meetings?meeting_key=${meetingKey}`,
           );
           const mData = await resMeeting.json();
 
           if (mData.length > 0) {
             const meeting = mData[0];
             const locationName = meeting.location;
+
+            // console.log("Meeting ricevuto:", meeting);
+            // console.log("Location ricevuta:", locationName);
+            // console.log(
+            //   "Coordinate trovate:",
+            //   circuitCoordinates[locationName],
+            // );
 
             // mappa statica
             const coords = circuitCoordinates[locationName];

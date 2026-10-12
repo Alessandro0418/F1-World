@@ -27,23 +27,20 @@
 
 .card-custom.card-1 {
   background: #242429;
-  border: 1.5px solid;
+  border-top: 1.5px solid;
   border-color: var(--team-color);
-  /* box-shadow: 2px 3px 3px #e5e5e793; */
 }
 
 .card-custom.card-2 {
   background: #242429;
-  border: 1.5px solid;
+  border-top: 1.5px solid;
   border-color: var(--team-color);
-  /* box-shadow: 2px 3px 3px #e0b80793; */
 }
 
 .card-custom.card-3 {
   background: #242429;
-  border: 1.5px solid;
+  border-top: 1.5px solid;
   border-color: var(--team-color);
-  /* box-shadow: 2px 3px 3px #c97a0493; */
 }
 
 /* common elements */
