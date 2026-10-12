@@ -97,7 +97,11 @@ export default function SessionPage() {
       <Navbar expand="lg" className="mt-3 rounded-4 custom-nav custom-toggler">
         <Container fluid>
           <Navbar.Brand className="text-white fw-bold ms-2">
-            | F1 World |
+            <img
+              style={{ width: "150px" }}
+              src="/img/F1_world_logo_2.png"
+              alt="Logo"
+            />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">

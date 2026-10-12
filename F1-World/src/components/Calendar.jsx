@@ -172,7 +172,11 @@ export default function Calendar() {
           >
             <Container fluid>
               <Navbar.Brand className="text-white ms-2 fw-bold">
-                | F1 World |
+                <img
+                  style={{ width: "150px" }}
+                  src="/img/F1_world_logo_2.png"
+                  alt="Logo"
+                />
               </Navbar.Brand>
               <Navbar.Toggle aria-controls="navbarScroll" />
               <Navbar.Collapse id="navbarScroll">

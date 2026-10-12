@@ -124,7 +124,11 @@ export default function WeatherPage() {
                 onClick={handleGoHome}
                 style={{ cursor: "pointer" }}
               >
-                | F1 World |
+                <img
+                  style={{ width: "150px" }}
+                  src="/img/F1_world_logo_2.png"
+                  alt="Logo"
+                />
               </Navbar.Brand>
               <Navbar.Toggle aria-controls="navbarScroll" />
               <Navbar.Collapse id="navbarScroll">
